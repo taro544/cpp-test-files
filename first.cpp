@@ -5,10 +5,11 @@
 using namespace std;
 
 int main(){
-string myString;
-cout << "WRITE SOMETHING" <<endl;
-getline(cin ,myString);
-int check;
+   string myString;
+   cout << "WRITE SOMETHING" <<endl;
+   getline(cin ,myString);
+   int check;
+   
    for (int i = 0; i < myString.size(); i++) {
       check = isdigit(myString[i]);
       if (check) {
