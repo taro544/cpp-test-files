@@ -7,6 +7,7 @@ using namespace std;
 int main(){
    string myString;
    cout << "WRITE SOMETHING" <<endl;
+   cout << "---->";
    getline(cin ,myString);
    int check;
    
