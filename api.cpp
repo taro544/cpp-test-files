@@ -15,12 +15,12 @@ size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* out
 
 int main()
 {   
-    std::string vallist;
-    std::cout << "Value:";
-    std::cin >> vallist;
+    int number = 0;
+    while(true){
     CURL* curl;
     CURLcode res;
-    std::string url = "http://127.0.0.1:8000/items/"+vallist;
+    std::string strNumber = std::to_string(number);
+    std::string url = "http://127.0.0.1:8000/items/"+strNumber;
     std::string response;
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
@@ -43,14 +43,20 @@ int main()
             json json_data = json::parse(response);
 
             // Print individual elements of the JSON data
+            
+            if (json_data["item"] != "null"){
             std::cout << "ID:" << json_data["item_id"] << std::endl;
             std::cout << "Name:" << json_data["item"] << std::endl;
-        
+            }
+            else{
+                break;
+            }
         }
 
         curl_easy_cleanup(curl);
     }
-
+    number++;
+    }
     curl_global_cleanup();
 
     return 0;
